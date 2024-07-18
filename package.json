@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
-    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node -r dotenv/config dist/main.js dotenv_config_path=../.env.dev\"",
-    "start:prod": "node dist/main.js",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"sh -c 'cat ../.env.dev ../env > ./.env.combined && node -r dotenv/config dist/main.js dotenv_config_path=./.env.combined'\"",
+    "start": "node dist/main.js",
     "lint": "eslint \"src/**/*.ts\" --fix"
   },
   "dependencies": {
